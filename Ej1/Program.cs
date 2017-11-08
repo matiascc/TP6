@@ -10,6 +10,46 @@ namespace Ej1
     {
         static void Main(string[] args)
         {
+
+            try
+            {
+                using (AgendaContext contexto = new AgendaContext())
+                {
+                    //Alta
+                    Persona mPersona = new Persona
+                    {
+                        PersonaId = 1,
+                        Nombre = "Juan",
+                        Apellido = "Sanchez",
+                        Telefonos = new List<Telefono>
+                        {
+                            new Telefono
+                            {
+                                TelefonoId = 1,
+                                Numero = "555-123456",
+                                Tipo = "Celular"
+                            }
+                        }
+                    };
+
+                    contexto.Personas.Add(mPersona);
+
+                    contexto.SaveChanges();
+
+                    //Busqueda
+                    foreach(Persona item in contexto.Personas)
+                    {
+                        Console.WriteLine("Id {0} - Nombre {1} - Apellido {2}", item.PersonaId, item.Nombre, item.Apellido);
+                    }
+
+                }
+            }
+            catch(Exception bEx)
+            {
+                Console.WriteLine("Se ha producido un Error", bEx);
+            }
+
+            Console.ReadLine();
         }
     }
 }
