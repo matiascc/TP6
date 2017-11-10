@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Ej2.AccountManager.DAL.EntityFramework
 {
-    class AccountRepository
+    class AccountRepository : Repository, IAccountRepository
     {
+        public AccountRepository(AccountManagerRepository pContext)
+        {
+            
+        }
     }
 }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ej2
+namespace Ej2.AccountManager.Domain
 {
-    class DocumentType
+    enum DocumentType
     {
+        DNI, CUIL, LE, LC
     }
 }

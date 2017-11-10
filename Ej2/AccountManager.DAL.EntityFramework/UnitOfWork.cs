@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ej2.AccountManager.DAL.EntityFramework
 {
-    class UnitOfWork
+    class UnitOfWork : IUnitOfWork
     {
+        private readonly DatabaseContext iDbContext;
     }
-}
