@@ -8,5 +8,9 @@ namespace Ej2.AccountManager
 {
     class AccountDTO
     {
+        public int id { get; set; }
+        public int name { get; set; }
+        public int overDraftLimit { get; set; }
+        public int balance { get; set; }
     }
 }
