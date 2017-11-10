@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ej1
 {
+    //Contexto de la base de datos donde se crean las tablas.
     class AgendaContext : DbContext
     {
         

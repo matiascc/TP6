@@ -15,7 +15,7 @@ namespace Ej1
             {
                 using (AgendaContext contexto = new AgendaContext())
                 {
-                    //Alta
+                    //Alta Persona
                     Persona mPersona = new Persona
                     {
                         PersonaId = 1,
@@ -36,7 +36,7 @@ namespace Ej1
 
                     contexto.SaveChanges();
 
-                    //Busqueda
+                    //Listado Personas.
                     foreach(Persona item in contexto.Personas)
                     {
                         Console.WriteLine("Id {0} - Nombre {1} - Apellido {2}", item.PersonaId, item.Nombre, item.Apellido);

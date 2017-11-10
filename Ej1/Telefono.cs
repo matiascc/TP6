@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ej1
 {
+    //Clase que representa la tabla Telefono
     class Telefono
     {
         public int TelefonoId { get; set; }

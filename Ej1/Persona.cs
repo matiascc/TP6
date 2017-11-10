@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ej1
 {
+    //Clase que representa la tabla Persona
     class Persona
     {
         public int PersonaId { get; set; }
@@ -14,6 +15,6 @@ namespace Ej1
 
         public String Apellido { get; set; }
 
-        public virtual IList<Telefono> Telefonos { get; set; }
+        public virtual IList<Telefono> Telefonos { get; set; }      //Lista de telefonos de una persona
     }
 }
