@@ -8,5 +8,9 @@ namespace Ej2.AccountManager.DAL
 {
     interface IRepository
     {
+        public void Add(TEntity pEntity){}
+        public void Remove(TEntity pEntity){}
+        public TEntity Get(int pId){}
+        public IEnumerable<TEntity> GetAll(){}
     }
 }

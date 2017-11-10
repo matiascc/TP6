@@ -8,5 +8,6 @@ namespace Ej2.AccountManager.DAL
 {
     interface IAccountRepository
     {
+        public IEnumerable<Account> GetOverdrawnAccounts(){}
     }
 }

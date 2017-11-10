@@ -8,5 +8,10 @@ namespace Ej2.AccountManager
 {
     class AccountMovementDTO
     {
+        public int id { get; set; }
+        public int date { get; set; }
+        public int description { get; set; }
+        public int amount { get; set; }
+
     }
 }

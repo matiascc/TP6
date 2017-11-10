@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Ej2
 {
-    class Bank
+    abstract class Bank
     {
+        public IEnumerable<AccountDTO> GetClientAccounts(pClientId)
+        {
+            
+        }
+
+
+        public IEnumerable<AccountMovementDTO> GetAccountMovements(pAccountId)
+        {
+
+        } 
     }
 }
