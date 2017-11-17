@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ej2.AccountManager
+namespace Ej2.AccountManager.IO
 {
     class AccountDTO
     {

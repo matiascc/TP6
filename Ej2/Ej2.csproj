@@ -51,22 +51,21 @@
   <ItemGroup>
     <Compile Include="AccountManager.DAL.EntityFramework\AccountManagerDbContext.cs" />
     <Compile Include="AccountManager.DAL.EntityFramework\AccountRepository.cs" />
-    <Compile Include="AccountManager.DAL.EntityFramework\ClientRepositrycs.cs" />
+    <Compile Include="AccountManager.DAL.EntityFramework\ClientRepository.cs" />
     <Compile Include="AccountManager.DAL.EntityFramework\Repository.cs" />
     <Compile Include="AccountManager.DAL.EntityFramework\UnitOfWork.cs" />
     <Compile Include="AccountManager.DAL\IAccountRepository.cs" />
     <Compile Include="AccountManager.DAL\IClientRepository.cs" />
-    <Compile Include="AccountManager.DAL\IDisponsable.cs" />
     <Compile Include="AccountManager.DAL\IRepository.cs" />
     <Compile Include="AccountManager.DAL\IUnitOfWork.cs" />
     <Compile Include="AccountManager.Domain\Account.cs" />
     <Compile Include="AccountManager.Domain\AccountMovement.cs" />
-    <Compile Include="AccountManager\AccountDTO.cs" />
-    <Compile Include="AccountManager\AccountMovementDTO.cs" />
     <Compile Include="AccountManager\Bank.cs" />
     <Compile Include="AccountManager.Domain\Client.cs" />
     <Compile Include="AccountManager.Domain\Document.cs" />
     <Compile Include="AccountManager.Domain\DocumentType.cs" />
+    <Compile Include="AccountManager\IO\AccountDTO.cs" />
+    <Compile Include="AccountManager\IO\AccountMovementDTO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Ej2.AccountManager.DAL
 {
-    interface IRepository
+    public interface IRepository<TEntity> where TEntity : class
     {
-        public void Add(TEntity pEntity){}
-        public void Remove(TEntity pEntity){}
-        public TEntity Get(int pId){}
-        public IEnumerable<TEntity> GetAll(){}
+        void Add(TEntity pEntity);
+        void Remove(TEntity pEntity);
+        TEntity Get(int pId);
+        IEnumerable<TEntity> GetAll();
     }
 }

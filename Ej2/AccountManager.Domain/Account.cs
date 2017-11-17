@@ -16,11 +16,31 @@ namespace Ej2.AccountManager.Domain
 
         public Client iCliente { get; set; }
 
-        public AccountMovement Movements { get; set; }
+        public List<AccountMovement> iMovements { get; set; }
 
-        public double GetBalance() { }
+        //Obtiene el balance de la cuenta
+        public double GetBalance()
+        {
+            double iBalance = 0;
+            foreach (AccountMovement item in iMovements)
+            {
+                iBalance += item.Amount;
+            }
+            return iBalance;
+        }
 
-        public IEnumerable<AccountMovement> GetLastMovements(int pCount = 7) { }
+        //Obtiene los ultimos 7 movimientos
+        public IEnumerable<AccountMovement> GetLastMovements(int pCount = 7)
+        {
+            AccountMovement[] iUltimosMov = new AccountMovement[pCount];        //Crea un array auxiliar
+            iMovements.OrderBy(x => x.Date);                                    //Ordena la lista por fecha
+            for (int i=0; i<pCount-1; i++)
+            {
+                iUltimosMov[i] = iMovements[i];                                 //Ingresa los primeros 7 elementos en el array
+            }
+            
+            return iUltimosMov;
+        }
 
         
 

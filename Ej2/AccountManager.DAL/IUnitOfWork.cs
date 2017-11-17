@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ej2.AccountManager.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ namespace Ej2.AccountManager.DAL
 {
     interface IUnitOfWork: IDisposable
     {
-        public void Complete(){}
+        void Complete();
 
-        public IAccountRepository AccountRepository{get;}
-        public IClientRepository ClientRepository{get;}
+        IAccountRepository<Account> AccountRepository { get; }
+        IClientRepository<Client> ClientRepository { get; }
     }
 }
