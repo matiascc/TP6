@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Ej2.AccountManager.DAL
 {
-    interface IClientRepository<TEntity> where TEntity : Client
+    interface IClientRepository : IRepository<Client> 
     {
-        IEnumerable<Client> GetOverdrawnAccounts();
+        
     }
 }

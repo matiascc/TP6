@@ -8,7 +8,9 @@ namespace Ej2.AccountManager.DAL
 {
     public interface IRepository<TEntity> where TEntity : class
     {
+        //Agrega una tupla a la tabla
         void Add(TEntity pEntity);
+        //Elimina una tupla de la tabla
         void Remove(TEntity pEntity);
         TEntity Get(int pId);
         IEnumerable<TEntity> GetAll();

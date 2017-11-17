@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace Ej2.AccountManager.DAL.EntityFramework
 {
-    class ClientRepository<TEntity, TDbContext> : Repository<TEntity, TDbContext>, IClientRepository<TEntity> where TEntity : Client where TDbContext : AccountManagerDbContext
+    class ClientRepository : Repository<Client, AccountManagerDbContext>, IClientRepository
     {
-        public ClientRepository(TDbContext pContext) : base(pContext)
+        public ClientRepository(AccountManagerDbContext pContext) : base(pContext)
         {
-            
         }
-
-        public IEnumerable<Client> GetOverdrawnAccounts() { }
     }
 }

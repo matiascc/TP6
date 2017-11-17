@@ -10,20 +10,50 @@ namespace Ej2.AccountManager.DAL.EntityFramework
     class UnitOfWork : IUnitOfWork
     {
         private readonly AccountManagerDbContext iDbContext;
-        
+
         public UnitOfWork(AccountManagerDbContext pContext)
         {
+            if (pContext == null)
+            {
+                throw new ArgumentNullException(nameof(pContext));
+            }
 
+            this.iDbContext = pContext;
+            this.ClientRepository = new ClientRepository(this.iDbContext);
+            this.AccountRepository = new AccountRepository(this.iDbContext);
         }
 
-        public IAccountRepository<Account> AccountRepository => throw new NotImplementedException();
+        /// <summary>
+        /// Repositorio de cuentas
+        /// </summary>
+        public IAccountRepository AccountRepository
+        {
+            get; private set;
+        }
 
-        public IClientRepository<Client> ClientRepository => throw new NotImplementedException();
+        /// <summary>
+        /// Repositorio de Clientes
+        /// </summary>
+        public IClientRepository ClientRepository
+        {
+            get; private set;
+        }
 
-        public void Complete() { }
+        /// <summary>
+        /// Persiste los cambios
+        /// </summary>
+        public void Complete()
+        {
+            this.iDbContext.SaveChanges();
+        }
 
-        public void Dispose() { }
-        
+        /// <summary>
+        /// Elimina los recursos tomados
+        /// </summary>
+        public void Dispose()
+        {
+            this.iDbContext.Dispose();
+        }
     }
 
 }

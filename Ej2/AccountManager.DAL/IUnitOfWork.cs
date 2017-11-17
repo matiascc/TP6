@@ -11,7 +11,7 @@ namespace Ej2.AccountManager.DAL
     {
         void Complete();
 
-        IAccountRepository<Account> AccountRepository { get; }
-        IClientRepository<Client> ClientRepository { get; }
+        IAccountRepository AccountRepository { get; }
+        IClientRepository ClientRepository { get; }
     }
 }

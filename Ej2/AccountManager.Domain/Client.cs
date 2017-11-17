@@ -14,8 +14,8 @@ namespace Ej2.AccountManager.Domain
 
         public String LastName { get; set; }
 
-        public Document iDocumento { get; set; }
+        public Document Document { get; set; }
 
-        public List<Account> lAccounts { get; set; }
+        public virtual IList<Account> Accounts { get; set; }
     }
 }

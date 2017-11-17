@@ -63,7 +63,6 @@
     <Compile Include="AccountManager\Bank.cs" />
     <Compile Include="AccountManager.Domain\Client.cs" />
     <Compile Include="AccountManager.Domain\Document.cs" />
-    <Compile Include="AccountManager.Domain\DocumentType.cs" />
     <Compile Include="AccountManager\IO\AccountDTO.cs" />
     <Compile Include="AccountManager\IO\AccountMovementDTO.cs" />
     <Compile Include="Program.cs" />

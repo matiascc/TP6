@@ -12,4 +12,9 @@ namespace Ej2.AccountManager.Domain
 
         public DocumentType Type { get; set; }
     }
+
+    public enum DocumentType
+    {
+        DNI, CUIL, LC, LE
+    }
 }
