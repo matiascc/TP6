@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ej2.AccountManager.Domain
+namespace Ej2.Domain
 {
-    class Account
+    public class Account
     {
         public int Id { get; set; }
 

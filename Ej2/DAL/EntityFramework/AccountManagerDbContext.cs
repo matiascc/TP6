@@ -1,15 +1,11 @@
-﻿using Ej2.AccountManager.Domain;
-using System;
-using System.Collections.Generic;
+﻿using Ej2.DAL.EntityFramework.Mappings;
+using Ej2.Domain;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Ej2.AccountManager.DAL.EntityFramework
+namespace Ej2.DAL.EntityFramework
 {
     //Contexto de la base de datos donde se crean las tablas.
-    class AccountManagerDbContext : DbContext 
+    public class AccountManagerDbContext : DbContext 
     {
         public DbSet<Client> Clients { get; set; }
 

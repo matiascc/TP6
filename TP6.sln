@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ej1", "Ej1\Ej1.csproj", "{A89F5094-5304-485D-8C58-94615449DACB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ej2", "Ej2\Ej2.csproj", "{4C26E66F-12D1-41D1-8CE5-89BD990BC918}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ej2_Interfaz", "Ej2_Interfaz\Ej2_Interfaz.csproj", "{36A0D60E-32D1-4E11-A816-78EA32782395}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4C26E66F-12D1-41D1-8CE5-89BD990BC918}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C26E66F-12D1-41D1-8CE5-89BD990BC918}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C26E66F-12D1-41D1-8CE5-89BD990BC918}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36A0D60E-32D1-4E11-A816-78EA32782395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36A0D60E-32D1-4E11-A816-78EA32782395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36A0D60E-32D1-4E11-A816-78EA32782395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36A0D60E-32D1-4E11-A816-78EA32782395}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

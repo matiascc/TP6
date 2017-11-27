@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ej2.AccountManager.DAL
+namespace Ej2.DAL
 {
     public interface IRepository<TEntity> where TEntity : class
     {

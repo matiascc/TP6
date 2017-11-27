@@ -1,13 +1,13 @@
-﻿using Ej2.AccountManager.Domain;
+﻿using Ej2.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ej2.AccountManager.DAL
+namespace Ej2.DAL
 {
-    interface IClientRepository : IRepository<Client> 
+    public interface IClientRepository : IRepository<Client> 
     {
         
     }

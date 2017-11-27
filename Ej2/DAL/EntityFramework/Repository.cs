@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ej2.AccountManager.DAL.EntityFramework
+namespace Ej2.DAL.EntityFramework
 {
     /// <summary>
     /// Implementacion base de un repositio
@@ -76,3 +76,4 @@ namespace Ej2.AccountManager.DAL.EntityFramework
             this.iDbContext.Set<TEntity>().Remove(pEntity);
         }
     }
+}

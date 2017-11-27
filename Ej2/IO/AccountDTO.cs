@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ej2.AccountManager.IO
+namespace Ej2.IO
 {
-    class AccountDTO
+    public class AccountDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
