@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ej2;
+using Ej2.IO;
 using Ej2.Domain;
 using Ej2.DAL.EntityFramework;
 
@@ -21,7 +22,8 @@ namespace Ej2_Interfaz
         {
             InitializeComponent();
             
-            List<DocumentType> docList = iBank.ListTypeDocument();
+            //Carga los tipos de documentos en un ComboBox
+            List<DocumentType> docList = iBank.ListTypeDocument();          
             foreach (var item in docList)
             {
                 cbDocType.Items.Add(item);
@@ -33,40 +35,79 @@ namespace Ej2_Interfaz
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //Respuesta al boton de busqueda de cliente por id
+        private void bSearchClientId_Click(object sender, EventArgs e)
         {
-            AdmClient ventana = new AdmClient(Int32.Parse(tbIdForSearch.Text));
-            ventana.Show();
+            try
+            {   
+                //Abre ventana de administracion del cliente pasando como parametro la id del cliente.
+                AdmClient ventana = new AdmClient(Int32.Parse(tbIdForSearch.Text));
+                ventana.Show();
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show("Verifique que ingreso correctamente el Id.", exc.Message);
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        //Agrega un cliente nuevo
+        private void bAddClient_Click(object sender, EventArgs e)
+        {
+            AccountManagerDbContext context = new AccountManagerDbContext();
+            try
+            { 
+                iBank.AddClient(context, tbDocNum.Text, cbDocType.Text, 
+                    tbFName.Text, tbLName.Text);
+
+                int aux = iBank.SearchIdClientByNumDoc(context, tbDocNum.Text);
+                
+                tbIdForSearch.Text = aux.ToString();        //Muestra en el campo de id cual es la id asignada al nuevo cliente
+            }
+            catch(Exception exc)
+            {
+                MessageBox.Show("Verifique que ingreso correctamente los datos.", exc.Message);
+            }
+        }
+
+        //Busca un cliente por num de documento
+        private void bSearchClientNumDoc_Click(object sender, EventArgs e)
         {
             AccountManagerDbContext context = new AccountManagerDbContext();
 
-            iBank.AddClient(context, tbDocNum.Text, cbDocType.Text, 
-                tbFName.Text, tbLName.Text);
-
-            int aux = iBank.SearchIdClientByNumDoc(context, tbDocNum.Text);
-            if (aux == 0)
-            {
-                MessageBox.Show("No se encontro el cliente");
+            try
+            { 
+                int idClient = iBank.SearchIdClientByNumDoc(context, textBox1.Text);
+                //Si el metodo devuelve 0, es porque no se encontro.
+                if (idClient == 0)
+                {
+                    MessageBox.Show("No se encontro el cliente");
+                }
+                else
+                { 
+                    AdmClient ventana = new AdmClient(idClient);
+                    ventana.Show();
+                }
             }
-
-            tbIdForSearch.Text = aux.ToString();
+            catch(Exception exc)
+            {
+                MessageBox.Show("Verifique que ingreso correctamente el Numero de Doc.", exc.Message);
+            }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        //Muestra en una dataGridView las cuentas con deuda
+        private void bAccountsDebt_Click(object sender, EventArgs e)
         {
             AccountManagerDbContext context = new AccountManagerDbContext();
-
-            int aux = iBank.SearchIdClientByNumDoc(context, textBox1.Text);
-            if (aux == 0)
+            try
             {
-                MessageBox.Show("No se encontro el cliente");
+                IEnumerable<AccountDTO> AccDebt = iBank.GetAccountsWithDebt(context);
+
+                dgvAccountsDebt.DataSource = AccDebt;
             }
-
-            tbIdForSearch.Text = aux.ToString();
-
+            catch(Exception exc)
+            {
+                MessageBox.Show("Error al buscar cuentas con deuda.", exc.Message);
+            }
         }
     }
 }

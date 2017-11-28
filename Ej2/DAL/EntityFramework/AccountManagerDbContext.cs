@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace Ej2.DAL.EntityFramework
 {
-    //Contexto de la base de datos donde se crean las tablas.
+    //Contexto de la base de datos, con las respectivas tablas que la componen.
     public class AccountManagerDbContext : DbContext 
     {
         public DbSet<Client> Clients { get; set; }
@@ -15,14 +15,11 @@ namespace Ej2.DAL.EntityFramework
 
         public AccountManagerDbContext() : base("AccountManagerContext")
         {
-            //Database.SetInitializer<AccountManagerDbContext>(new CreateDatabaseIfNotExists<AccountManagerDbContext>());
-            //Database.SetInitializer<AccountManagerDbContext>(new DropCreateDatabaseIfModelChanges<AccountManagerDbContext>());
-            //Database.SetInitializer<AccountManagerDbContext>(new DropCreateDatabaseAlways<AccountManagerDbContext>());
-
-            // Se establece la estrategia personalizada de inicialización de la BBDD.
+           // Se establece la estrategia personalizada de inicialización de la BBDD.
             Database.SetInitializer<AccountManagerDbContext>(new DatabaseInitializationStrategy());
         }
 
+        //Agrega las clases de mapeo de las tablas a la configuracion.
         protected override void OnModelCreating(DbModelBuilder pModelBuilder)
         {
             pModelBuilder.Configurations.Add(new ClientMap());

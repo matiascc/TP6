@@ -3,9 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Ej2.DAL.EntityFramework.Mappings
 {
-    /// <summary>
-    /// Clase de mapeo de movimiento de la cuenta
-    /// </summary>
+    // Clase de mapeo de movimiento de la cuenta
     class AccountMovementMap : EntityTypeConfiguration<AccountMovement>
     {
 

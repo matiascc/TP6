@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ej2.Domain
 {
+    //Documento con tipo y numero
     public class Document
     {
         public String Number { get; set; }
@@ -13,6 +14,7 @@ namespace Ej2.Domain
         public DocumentType Type { get; set; }
     }
 
+    //Tipos de documentos
     public enum DocumentType
     {
         DNI, CUIL, LC, LE

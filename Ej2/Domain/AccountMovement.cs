@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ej2.Domain
 {
+    //Movimientos de la cuenta
     public class AccountMovement
     {
         public int Id { get; set; }

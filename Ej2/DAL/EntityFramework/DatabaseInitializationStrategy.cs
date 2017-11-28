@@ -5,9 +5,7 @@ using System.Data.Entity;
 
 namespace Ej2.DAL.EntityFramework
 {
-    /// <summary>
-    /// Inicilización de BBDD
-    /// </summary>
+    //Inicialización de la Base de Datos
     class DatabaseInitializationStrategy : CreateDatabaseIfNotExists<AccountManagerDbContext>
     {
 

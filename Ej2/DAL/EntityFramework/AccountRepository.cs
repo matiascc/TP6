@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Ej2.DAL.EntityFramework
 {
+    //Repositorio de las cuentas.
     class AccountRepository : Repository<Account, AccountManagerDbContext>, IAccountRepository
     {
         public AccountRepository(AccountManagerDbContext pContext) : base(pContext)
         {
         }
 
+        //Devuelve el balance de una cuenta pasada por parametro.
         public double GetAccountBalance(Account pAccount)
         {
             if (pAccount == null)
@@ -23,6 +25,7 @@ namespace Ej2.DAL.EntityFramework
             return pAccount.Movements.Sum(pMovement => pMovement.Amount);
         }
 
+        //Devuelve los ultimos 7 movimientos de una cuenta.
         public IEnumerable<AccountMovement> GetLastMovements(Account pAccount, int pCount = 7)
         {
             if (pAccount == null)
@@ -32,7 +35,8 @@ namespace Ej2.DAL.EntityFramework
 
             return pAccount.Movements.OrderBy(pMovement => pMovement.Date).Take(pCount);
         }
-
+        
+        //Devuelve cuentas con deuda.
         public IEnumerable<Account> GetOverdrawnAccounts()
         {
             return from account in this.iDbContext.Set<Account>()

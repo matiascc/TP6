@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ej2.Domain
 {
+    //Cliente
     public class Client
     {
         public int Id { get; set; }

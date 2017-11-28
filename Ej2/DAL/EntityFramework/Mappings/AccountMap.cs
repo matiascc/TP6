@@ -3,9 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Ej2.DAL.EntityFramework.Mappings
 {
-    /// <summary>
-    /// Clase de Mapeo de cuenta
-    /// </summary>
+    // Clase de Mapeo de cuenta
     class AccountMap : EntityTypeConfiguration<Account>
     {
 

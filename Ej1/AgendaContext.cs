@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ej1
 {
-    //Contexto de la base de datos donde se crean las tablas.
+    //Contexto de la base de datos, con las respectivas tablas que la componen.
     class AgendaContext : DbContext
     {
-        
         public IDbSet<Persona> Personas { get; set; }
 
         public IDbSet<Telefono> Telefono { get; set; }

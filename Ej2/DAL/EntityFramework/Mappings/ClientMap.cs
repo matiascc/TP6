@@ -4,9 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Ej2.DAL.EntityFramework.Mappings
 {
-    /// <summary>
-    /// Clase de mapeo de Cliente
-    /// </summary>
+    // Clase de mapeo de Cliente
     class ClientMap : EntityTypeConfiguration<Client>
     {
 

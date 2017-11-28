@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ej2.Domain
 {
+    //Cuenta
     public class Account
     {
         public int Id { get; set; }
@@ -18,22 +19,13 @@ namespace Ej2.Domain
 
         public virtual IList<AccountMovement> Movements { get; set; }
 
-        
-
-        /// <summary>
-        /// Obtiene el balance de la cuenta
-        /// </summary>
-        /// <returns>Balance de la cuenta</returns>
+        // Obtiene el balance de la cuenta
         public double GetBalance()
         {
             return this.Movements.Sum(t => t.Amount);
         }
 
-        /// <summary>
-        /// Obtención de los n movimientos de la cuenta
-        /// </summary>
-        /// <param name="pCount">Cantidad de movimientos</param>
-        /// <returns>Movimiento de la cuenta</returns>
+        // Obtiene los ultimos 7 movimientos de la cuenta
         IEnumerable<AccountMovement> GetLastMovements(int pCount = 7)
         {
             return this.Movements.Take(pCount);

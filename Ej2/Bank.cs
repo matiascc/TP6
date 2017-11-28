@@ -8,13 +8,10 @@ using System.Linq;
 
 namespace Ej2
 {
+    //Clase Fachada
     public class Bank
     {
-        /// <summary>
-        /// Obtiene las cuentas de un cliente
-        /// </summary>
-        /// <param name="pClientId">Id del cliente</param>
-        /// <returns>Cuentas del cliente</returns>
+        // Obtiene las cuentas de un cliente
         public IEnumerable<AccountDTO> GetClientAccounts(int pClientId)
         {
             List<AccountDTO> mAccounts = new List<AccountDTO>();
@@ -44,11 +41,7 @@ namespace Ej2
             return mAccounts;
         }
 
-        /// <summary>
-        /// Obtiene los movimientos de la cuenta
-        /// </summary>
-        /// <param name="pAccountId">Id del movimiento de la cuenta</param>
-        /// <returns>Movimientos de la cuenta</returns>
+        // Obtiene los movimientos de la cuenta
         public IEnumerable<AccountMovementDTO> GetAccountMovements(int pAccountId)
         {
             List<AccountMovementDTO> mAccountMovements = new List<AccountMovementDTO>();
@@ -78,12 +71,12 @@ namespace Ej2
             return mAccountMovements;
         }
 
-
+        //Agrega un nuevo cliente
         public void AddClient(AccountManagerDbContext pContext, String pDocument,
             String pDocumentType, String pName, String pSurname)
         {
             DocumentType iDocT;
-
+            //Verifica que tipo de documento de identidad selecciono.
             if (pDocumentType == "CUIL")
             {
                 iDocT = DocumentType.CUIL;
@@ -124,6 +117,7 @@ namespace Ej2
             
         }
 
+        //Agrega una cuenta
         public void AddAccount(int pIdClient, String pName, int pOverdraftLimit)
         {
             using (var bUnitOfWork = new UnitOfWork(new AccountManagerDbContext()))
@@ -142,6 +136,7 @@ namespace Ej2
 
         }
         
+        //Agrega un movimiento
         public void AddMovement(int pIdAccount, String pDescription, int pAmount)
         {
             using (var bUnitOfWork = new UnitOfWork(new AccountManagerDbContext()))
@@ -160,18 +155,20 @@ namespace Ej2
             }
         }
 
+        //Obtiene las cuentas con deuda
         public IEnumerable<AccountDTO> GetAccountsWithDebt(AccountManagerDbContext pContext)
         {
             List<AccountDTO> mAccountWithDebt = new List<AccountDTO>();
 
             using (var bUnitOfWork = new UnitOfWork(new AccountManagerDbContext()))
             {
-                foreach (Client bClient in pContext.Clients)
+                //Verifica cada cuenta de cada cliente
+                foreach (Client bClient in pContext.Clients)    
                 {
                     foreach (Account bAccount in bClient.Accounts)
                     {
 
-                        if ((bAccount.GetBalance()) < (bAccount.OverdraftLimit * -1))
+                        if ((bAccount.GetBalance()) < (bAccount.OverdraftLimit * -1))       //Si el balance es menor al negativo del limite de descubierto
                         {
                             mAccountWithDebt.Add(new AccountDTO
                             {
@@ -190,6 +187,7 @@ namespace Ej2
             return mAccountWithDebt;
         }
 
+        //Devuelve los tipos de documentos en una lista
         public List<DocumentType> ListTypeDocument()
         {
             List<DocumentType> TypeDoc = new List<DocumentType>();
@@ -202,15 +200,18 @@ namespace Ej2
             return TypeDoc;
         }
 
+        //Busca el id del cliente por numero de documento
         public int SearchIdClientByNumDoc (AccountManagerDbContext pContext, String pNumDoc)
         {
             int idClient = 0;
 
             using (var bUnitOfWork = new UnitOfWork(new AccountManagerDbContext()))
             {
-                foreach (var bClient in bUnitOfWork.ClientRepository.GetAll())
+                //foreach (var bClient in bUnitOfWork.ClientRepository.GetAll())
+                foreach (Client bClient in pContext.Clients)
                 {
-                    if (bClient.Document.ToString() == pNumDoc)
+                    //if (bClient.Document.Equals(pNumDoc))
+                    if (bClient.Document.Number.Equals(pNumDoc))
                     {
                         idClient = bClient.Id;
                         return idClient;
@@ -221,5 +222,19 @@ namespace Ej2
             return idClient;
         }
 
+        //Busca una cuenta por nombre de la cuenta y cliente. Devuelve el id de la cuenta.
+        public int GetAccountIdByNameAndIdClient(int IdClient, String pName)
+        {
+            IEnumerable<AccountDTO> AccountsList = GetClientAccounts(IdClient);
+            
+            foreach (var item in AccountsList)
+            {
+                if (item.Name == pName)
+                {
+                    return item.Id;
+                }
+            }
+            return 0;
+        }
     }
 }

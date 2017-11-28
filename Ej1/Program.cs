@@ -32,9 +32,9 @@ namespace Ej1
                         }
                     };
 
-                    contexto.Personas.Add(mPersona);
+                    contexto.Personas.Add(mPersona);    //Agrega una persona a la base de datos.
 
-                    contexto.SaveChanges();
+                    contexto.SaveChanges();             //Guarda los datos.
 
                     //Listado Personas.
                     foreach(Persona item in contexto.Personas)
